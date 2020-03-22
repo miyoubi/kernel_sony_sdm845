@@ -141,10 +141,10 @@ static bool is_ignored_symbol(const char *name, char type)
 			return true;
 	}
 
-	if (type == 'U' || type == 'u')
+	if (toupper(type) == 'U')
 		return true;
 	/* exclude debugging symbols */
-	if (type == 'N' || type == 'n')
+	if (toupper(type) == 'N')
 		return true;
 
 	if (toupper(type) == 'A') {
@@ -152,9 +152,13 @@ static bool is_ignored_symbol(const char *name, char type)
 		if (strcmp(name, "__kernel_syscall_via_break") &&
 		    strcmp(name, "__kernel_syscall_via_epc") &&
 		    strcmp(name, "__kernel_sigtramp") &&
-		    strcmp(name, "__gp"))
-			return true;
+		    strcmp(name, "__gp")) {
+				return true;
+			}
 	}
+
+	if (toupper(type) == 'W' && strstr(name, ".c") != NULL)
+		return true;
 
 	return false;
 }
