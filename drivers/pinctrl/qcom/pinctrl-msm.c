@@ -1,11 +1,7 @@
 /*
  * Copyright (c) 2013, Sony Mobile Communications AB.
-<<<<<<< HEAD   (76a728 Merge "net: ipc_router: Add bounds check on tx path")
- * Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
-=======
  * Copyright (c) 2013-2018, 2021, The Linux Foundation. All rights reserved.
  * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
->>>>>>> CHANGE (576233 pinctrl: qcom: Using readl_relaxed/writel_relaxed APIs)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
