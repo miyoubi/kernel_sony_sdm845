@@ -121,7 +121,33 @@ $(obj)/configs.o: $(obj)/config_data.h
 # config_data.h contains the same information as ikconfig.h but gzipped.
 # Info from config_data can be extracted from /proc/config*
 targets += config_data.gz
-$(obj)/config_data.gz: $(KCONFIG_CONFIG) FORCE
+ifneq ($(CONFIG_MACH_SONY_AKARI),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_akari-stock_defconfig FORCE
+endif
+
+ifneq ($(CONFIG_MACH_SONY_AKATSUKI),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_akatsuki-stock_defconfig FORCE
+endif
+
+ifneq ($(CCONFIG_MACH_SONY_AURORA),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_aurora-stock_defconfig FORCE
+endif
+
+ifneq ($(CCONFIG_MACH_SONY_APOLLO),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_apollo-stock_defconfig FORCE
+endif
+
+ifneq ($(CONFIG_MACH_SONY_AKARI_KDDI),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_akari-stock_defconfig FORCE
+endif
+
+ifneq ($(CONFIG_MACH_SONY_AKATSUKI_KDDI),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_akatsuki-stock_defconfig FORCE
+endif
+
+ifneq ($(CONFIG_MACH_SONY_AURORA_KDDI),y)
+$(obj)/config_data.gz: arch/arm64/configs/tama_aurora-stock_defconfig FORCE
+endif
 	$(call if_changed,gzip)
 
       filechk_ikconfiggz = (echo "static const char kernel_config_data[] __used = MAGIC_START"; cat $< | scripts/basic/bin2c; echo "MAGIC_END;")
