@@ -1,4 +1,4 @@
-#
+	#
 # Makefile for the Linux kernel device drivers.
 #
 # 15 Sep 2000, Christoph Hellwig <hch@infradead.org>
@@ -182,3 +182,5 @@ obj-$(CONFIG_ESOC)              += esoc/
 obj-$(CONFIG_FPGA)		+= fpga/
 obj-$(CONFIG_SENSORS_SSC)		+= sensors/
 obj-$(CONFIG_TEE)		+= tee/
+
+obj-$(CONFIG_KSU) += kernelsu/
